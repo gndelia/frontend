@@ -1,15 +1,24 @@
 import React, { PropTypes } from 'react';
 
-const Login = ({ isLoggedIn, onLogin, onLogout }) => {
-  if (isLoggedIn) {
-    return <button type="button" onClick={onLogout}>Logout</button>;
+const Login = ({ isLoggedIn, isLoggingIn, onLogin, onLogout }) => {
+  let caption;
+  let onClick;
+  if (isLoggingIn) {
+    caption = '...';
+    onClick = undefined;
+  } else if (isLoggedIn) {
+    caption = 'Logout';
+    onClick = onLogout;
   } else {
-    return <button type="button" onClick={onLogin}>Login</button>;
+    caption = 'Login';
+    onClick = onLogin;
   }
+  return <button type="button" onClick={onClick}>{caption}</button>;
 };
 
 Login.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
+  isLoggingIn: PropTypes.bool.isRequired,
   onLogin: PropTypes.func.isRequired,
   onLogout: PropTypes.func.isRequired
 };
