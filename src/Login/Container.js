@@ -1,21 +1,15 @@
 import { connect } from 'react-redux';
-import { login, logout } from 'redux-implicit-oauth2';
+import { doLogin, doLogout } from './Actions';
 import Login from './Login';
 
-const config = {
-  url: 'https://accounts.google.com/o/oauth2/v2/auth',
-  client: '288053943731-m7pcqqi602kqacaoki5fetmhgbbr5bka.apps.googleusercontent.com',
-  redirect: 'http://localhost:3000',
-  scope: 'https://www.googleapis.com/auth/userinfo.profile'
-};
-
 const mapStateToProps = ({ auth }) => ({
-  isLoggedIn: auth.isLoggedIn
+  isLoggedIn: auth.isLoggedIn,
+  isLoggingIn: auth.isLoggingIn
 });
 
 const mapDispatchToProps = {
-  onLogin: () => login(config),
-  onLogout: logout
+  onLogin: doLogin,
+  onLogout: doLogout
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
