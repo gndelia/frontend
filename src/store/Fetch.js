@@ -3,20 +3,20 @@ import 'isomorphic-fetch';
 const DEFAULT_API_ROOT = `${window.location.protocol}//${window.location.host}`;
 
 function buildHeaders(method, content, isAuth, token) {
-  let fetchHeaders = {};
+  const fetchHeaders = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+  };
 
   if (isAuth) {
-    fetchHeaders = {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
+    fetchHeaders.Authorization = `Bearer ${token}`;
   }
 
   return {
     method,
     mode: 'cors',
     cache: 'default',
-    body: content,
+    body: JSON.stringify(content),
     headers: fetchHeaders
   };
 }
