@@ -38,6 +38,7 @@
     "isomorphic-fetch": "^2.2.1",
     "node-sass": "^4.5.2",
     "postcss-loader": "^2.0.5",
+    "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-css-modules": "^4.2.1",
     "react-dom": "^15.4.2",
@@ -47,8 +48,8 @@
     "react-router-dom": "^4.1.1",
     "react-test-render": "^1.0.3",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0",
     "redux-implicit-oauth2": "^1.0.2",
+    "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "sass-loader": "^6.0.5"
   },
