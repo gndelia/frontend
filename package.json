@@ -55,8 +55,8 @@
     "react-test-render": "^1.0.3",
     "react-transition-group": "1.x",
     "redux": "^3.7.1",
-    "redux-thunk": "^2.2.0",
     "redux-implicit-oauth2": "^1.0.2",
+    "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "sass-loader": "^6.0.6"
   },

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cssModules from 'react-css-modules';
 import Navbar from '../Navbar/Container';
 import Footer from './Footer';
@@ -15,5 +16,9 @@ const App = ({ children }) => (
     <Footer />
   </div>
 );
+
+App.propTypes = {
+  children: PropTypes.element.isRequired
+}
 
 export default cssModules(App, Styles, { allowMultiple: true });
