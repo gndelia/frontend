@@ -78,7 +78,11 @@ var config = {
       {test: /\.jpg$/, loader: 'file-loader'}
     ]
   },
-  devServer: {}
+  devServer: {
+    proxy: {
+      "/api": "http://localhost:8000"
+    }
+  }
 };
 
 module.exports = config;
