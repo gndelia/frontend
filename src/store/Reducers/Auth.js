@@ -1,6 +1,6 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from 'redux-implicit-oauth2';
 
-export default (state = {}, action) => {
+export default (state, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { ...state, isLoggingIn: true };
