@@ -1,4 +1,5 @@
 import { login, logout } from 'redux-implicit-oauth2';
+import Fetch from '../store/Fetch';
 
 const config = {
   url: 'https://accounts.google.com/o/oauth2/v2/auth',
@@ -14,13 +15,10 @@ export const REQUEST_AUTH_FAILURE = 'REQUEST_AUTH_FAILURE';
 export const doLogin = () => dispatch => login(config)(dispatch)
   .then((result) => {
     const provider = 'google';
-    dispatch({
-      types: [REQUEST_AUTH, RECEIVE_AUTH, REQUEST_AUTH_FAILURE],
-      shouldCallAPI: () => true,
-      endpoint: `login/token/${provider}`,
-      callHeaders: { method: 'POST', mode: 'cors', cache: 'default' },
-      payload: { token: result.token }
-    });
+    dispatch(Fetch.POST(`/api/login/token/${provider}`,
+                        [REQUEST_AUTH, RECEIVE_AUTH, REQUEST_AUTH_FAILURE],
+                        { token: result.token }
+    ));
   });
 
 export const doLogout = logout;
