@@ -3,6 +3,7 @@ import 'isomorphic-fetch';
 const DEFAULT_API_ROOT = `${window.location.protocol}//${window.location.host}`;
 
 function buildHeaders(method, content, isAuth, token) {
+
   const fetchHeaders = {
     'Content-Type': 'application/json',
     Accept: 'application/json'
@@ -21,7 +22,13 @@ function buildHeaders(method, content, isAuth, token) {
   };
 }
 
-function request(method, types, endpoint, content, token) {
+function request(method, types, endpoint, content, options) {
+
+  let token = null;
+
+  if ((options != null) && ('token' in options)) {
+    token = options.token;
+  }
 
   let isAuth = false;
 
@@ -41,21 +48,23 @@ function request(method, types, endpoint, content, token) {
 }
 
 class Fetch {
-  static GET(endpoint, types, token) {
-    return request('GET', types, endpoint, null, token);
+
+  static GET(endpoint, types, options) {
+    return request('GET', types, endpoint, null, options);
   }
 
-  static POST(endpoint, types, content, token) {
-    return request('POST', types, endpoint, content, token);
+  static POST(endpoint, types, content, options) {
+    return request('POST', types, endpoint, content, options);
   }
 
-  static PUT(endpoint, types, content, token) {
-    return request('PUT', types, endpoint, content, token);
+  static PUT(endpoint, types, content, options) {
+    return request('PUT', types, endpoint, content, options);
   }
 
-  static DELETE(endpoint, types, content, token) {
-    return request('DELETE', types, endpoint, content, token);
+  static DELETE(endpoint, types, content, options) {
+    return request('DELETE', types, endpoint, content, options);
   }
+
 }
 
 export default Fetch;
