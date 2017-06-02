@@ -17,6 +17,7 @@ export const doLogin = () => dispatch => login(config)(dispatch)
     const provider = 'google';
     dispatch(Fetch.POST(`/api/login/token/${provider}`,
                         [REQUEST_AUTH, RECEIVE_AUTH, REQUEST_AUTH_FAILURE],
+                        null,
                         { token: result.token }
     ));
   });
