@@ -1,6 +1,16 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from 'redux-implicit-oauth2';
 
-export default (state, action) => {
+const initialState = {
+  providers: [{
+    name: 'google',
+    url: 'https://accounts.google.com/o/oauth2/v2/auth',
+    client: '288053943731-m7pcqqi602kqacaoki5fetmhgbbr5bka.apps.googleusercontent.com',
+    redirect: 'http://localhost:3000',
+    scope: 'openid profile email'
+  }]
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { ...state, isLoggingIn: true };
