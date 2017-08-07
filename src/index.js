@@ -9,6 +9,8 @@ import storeCreator from './store/configureStore';
 import App from './App/App'; // Main application.
 import Home from './App/Home'; // Home
 import Seguidor from './Seguidor/Container';
+import Login from './Login/Container';
+import Register from './Register/Register';
 
 // Create store and browser history.
 const store = storeCreator();
@@ -22,6 +24,8 @@ const Root = () => (
           <Route path="/" component={App} />
           <Route exact path="/" component={Home} />
           <Route exact path="/seguidor" component={Seguidor} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
         </div>
       </Router>
     </Provider>

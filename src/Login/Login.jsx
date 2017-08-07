@@ -4,22 +4,33 @@ import cssModules from 'react-css-modules'
 
 import Styles from './Login.scss'
 import SocialLogin from './SocialLogin/SocialLogin'
+import LoginForm from './LoginForm';
 
 const Login = ({ isLoggedIn, onLogin, onLogout, providers }) => {
-  const loginOrLogout = (!isLoggedIn) ?
-    (<div>
-      <form className="passwordLogin">
-        <input name="usuario" />
-        <input name="password" type="password" />
-      </form>
+
+  if(!isLoggedIn)
+  {
+    return(
+    <div styleName="loginContainer">
+
+      <div styleName="LoginTitle">
+  	     <h1>Login</h1>
+  	  </div>
+
+      <LoginForm />
       <SocialLogin onLogin={onLogin} providers={providers} />
-    </div>) :
-    (<button type="button" onClick={onLogout}>Logout</button>)
-  return (
-    <div className="loginContainer">
-      {loginOrLogout}
     </div>
-  )
+    );
+  }
+  else
+  {
+    return(
+    <div styleName="loginContainer">
+      <button type="button" onClick={onLogout}>Logout</button>
+    </div>
+    );
+  }
+
 }
 
 Login.propTypes = {
